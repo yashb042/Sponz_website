@@ -39,15 +39,15 @@ const eventSchema = new mongoose.Schema({
         type: Number,
         required: [true,"Please enter your event product stock!"],
     },
-    images:[
+    image_Url:[
         {
             public_id: {
                 type: String,
-                required: true,
+                required: false,
               },
               url: {
                 type: String,
-                required: true,
+                required: false,
               },
         },
     ],

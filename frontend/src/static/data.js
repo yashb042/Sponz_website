@@ -21,7 +21,7 @@ export const navItems = [
       url: "/faq",
     },
   ];
-  
+
   // branding data
   export const brandingData = [
     {
@@ -186,7 +186,7 @@ export const navItems = [
       ),
     },
   ];
-  
+
   // categories data
   export const categoriesData = [
     {
@@ -259,7 +259,7 @@ export const navItems = [
         "https://searchspring.com/wp-content/uploads/2022/10/Hero-Image-Platform-Others-2.png",
     },
   ];
-  
+
   // product Data
   export const productData = [
     {
@@ -320,7 +320,6 @@ export const navItems = [
       rating: 5,
       total_sell: 80,
       stock: 10,
-      category:"Mobile & Tablets"
     },
     {
       id: 1,
@@ -351,7 +350,6 @@ export const navItems = [
       rating: 4,
       total_sell: 75,
       stock: 10,
-      category:"Computers & Laptop"
     },
     {
       id: 4,
@@ -413,7 +411,6 @@ export const navItems = [
       rating: 5,
       total_sell: 49,
       stock: 10,
-      category:"Shoes"
     },
     {
       id: 1,
@@ -590,7 +587,7 @@ export const navItems = [
       stock: 10,
     },
   ];
-  
+
   export const footerProductLinks = [
     {
       name: "About us",
@@ -610,7 +607,7 @@ export const navItems = [
       name: "Reviews",
     },
   ];
-  
+
   export const footercompanyLinks = [
     {
       name: "Game & Video",
@@ -628,7 +625,7 @@ export const navItems = [
       name: "Events",
     },
   ];
-  
+
   export const footerSupportLinks = [
     {
       name: "FAQ",
@@ -646,4 +643,3 @@ export const navItems = [
       name: "Live chat",
     },
   ];
-  

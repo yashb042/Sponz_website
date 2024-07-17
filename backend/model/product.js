@@ -27,7 +27,7 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please enter your product stock!"],
   },
-  images: [
+  image_Url: [
     {
       public_id: {
         type: String,

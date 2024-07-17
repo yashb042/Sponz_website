@@ -120,13 +120,13 @@ const ProductDetails = ({ data }) => {
             <div className="block w-full 800px:flex">
               <div className="w-full 800px:w-[50%]">
                 <img
-                  src={`${data && data.images[select]?.url}`}
+                  src={`${data && data.image_Url[select]?.url}`}
                   alt=""
                   className="w-[80%]"
                 />
                 <div className="w-full flex">
                   {data &&
-                    data.images.map((i, index) => (
+                    data.image_Url.map((i, index) => (
                       <div
                         className={`${
                           select === 0 ? "border" : "null"
