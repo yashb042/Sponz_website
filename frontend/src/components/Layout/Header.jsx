@@ -35,11 +35,12 @@ const Header = ({ activeHeading }) => {
     const term = e.target.value;
     setSearchTerm(term);
 
-    const filteredProducts =
+    let filteredProducts =
       allProducts &&
       allProducts.filter((product) =>
-        product.name.toLowerCase().includes(term.toLowerCase())
+        product.Event_Name.toLowerCase().includes(term.toLowerCase())
       );
+    filteredProducts = filteredProducts.slice(0, 5);
     setSearchData(filteredProducts);
   };
 
@@ -67,7 +68,7 @@ const Header = ({ activeHeading }) => {
           <div className="w-[50%] relative">
             <input
               type="text"
-              placeholder="Search Product..."
+              placeholder="Search Event..."
               value={searchTerm}
               onChange={handleSearchChange}
               className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md"
@@ -84,11 +85,11 @@ const Header = ({ activeHeading }) => {
                       <Link to={`/product/${i._id}`}>
                         <div className="w-full flex items-start-py-3">
                           <img
-                            src={`${i.images[0]?.url}`}
+                            src={`${i.Event_Image}`}
                             alt=""
                             className="w-[40px] h-[40px] mr-[10px]"
                           />
-                          <h1>{i.name}</h1>
+                          <h1>{i.Event_Name}</h1>
                         </div>
                       </Link>
                     );
@@ -97,14 +98,14 @@ const Header = ({ activeHeading }) => {
             ) : null}
           </div>
 
-          <div className={`${styles.button}`}>
-            <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}>
-              <h1 className="text-[#fff] flex items-center">
-                {isSeller ? "Go Dashboard" : "Become Seller"}{" "}
-                <IoIosArrowForward className="ml-1" />
-              </h1>
-            </Link>
-          </div>
+          {/*<div className={`${styles.button}`}>*/}
+          {/*  <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}>*/}
+          {/*    <h1 className="text-[#fff] flex items-center">*/}
+          {/*      {isSeller ? "Go Dashboard" : "Become Seller"}{" "}*/}
+          {/*      <IoIosArrowForward className="ml-1" />*/}
+          {/*    </h1>*/}
+          {/*  </Link>*/}
+          {/*</div>*/}
         </div>
       </div>
       <div
@@ -160,13 +161,13 @@ const Header = ({ activeHeading }) => {
                 className="relative cursor-pointer mr-[15px]"
                 onClick={() => setOpenCart(true)}
               >
-                <AiOutlineShoppingCart
-                  size={30}
-                  color="rgb(255 255 255 / 83%)"
-                />
-                <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
-                  {cart && cart.length}
-                </span>
+                {/*<AiOutlineShoppingCart*/}
+                {/*  size={30}*/}
+                {/*  color="rgb(255 255 255 / 83%)"*/}
+                {/*/>*/}
+                {/*<span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">*/}
+                {/*  {cart && cart.length}*/}
+                {/*</span>*/}
               </div>
             </div>
 

@@ -2,9 +2,8 @@ import LoginPage from "../pages/Login";
 import SignupPage from "../pages/SignupPage";
 import ActivationPage from "../pages/ActivationPage";
 import HomePage from "../pages/HomePage";
-import ProductsPage from "../pages/ProductsPage";
-import BestSellingPage from "../pages/BestSellingPage";
 import EventsPage from "../pages/EventsPage";
+import BestSellingPage from "../pages/BestSellingPage";
 import FAQPage from "../pages/FAQPage";
 import CheckoutPage from "../pages/CheckoutPage";
 import PaymentPage from "../pages/PaymentPage";
@@ -18,12 +17,11 @@ import OrderDetailsPage from "../pages/OrderDetailsPage";
 import TrackOrderPage from "../pages/TrackOrderPage";
 import UserInbox from "../pages/UserInbox.jsx";
 
-export { 
+export {
     LoginPage,
     SignupPage,
     ActivationPage,
     HomePage,
-    ProductsPage,
     BestSellingPage,
     EventsPage,
     FAQPage,

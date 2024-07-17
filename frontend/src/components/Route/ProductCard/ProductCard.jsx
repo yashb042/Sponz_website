@@ -72,7 +72,7 @@ const ProductCard = ({ data,isEvent }) => {
           />
         </Link>
         {/*<Link to={`/shop/preview/${data?.shop._id}`}>*/}
-        {/*  <h5 className={`${styles.shop_name}`}>{data.shop.name}</h5>*/}
+          <h5 className={`${styles.shop_name}`}>{data.College_Name}</h5>
         {/*</Link>*/}
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
           <h4 className="pb-3 font-[500]">
@@ -86,18 +86,15 @@ const ProductCard = ({ data,isEvent }) => {
           <div className="py-2 flex items-center justify-between">
             <div className="flex">
               <h5 className={`${styles.productDiscountPrice}`}>
-                {data.originalPrice === 0
-                  ? data.originalPrice
-                  : data.discountPrice}
-                $
+                {data['Start Date']} - {data['End Date']}
               </h5>
-              <h4 className={`${styles.price}`}>
-                {data.originalPrice ? data.originalPrice + " $" : null}
-              </h4>
+              {/*<h4 className={`${styles.price}`}>*/}
+              {/*  {data.originalPrice ? data.originalPrice + " $" : null}*/}
+              {/*</h4>*/}
             </div>
-            <span className="font-[400] text-[17px] text-[#68d284]">
-              {data?.sold_out} sold
-            </span>
+            {/*<span className="font-[400] text-[17px] text-[#68d284]">*/}
+            {/*  {data?.sold_out} sold*/}
+            {/*</span>*/}
           </div>
         </Link>
 
@@ -120,21 +117,21 @@ const ProductCard = ({ data,isEvent }) => {
               title="Add to wishlist"
             />
           )}
-          <AiOutlineEye
-            size={22}
-            className="cursor-pointer absolute right-2 top-14"
-            onClick={() => setOpen(!open)}
-            color="#333"
-            title="Quick view"
-          />
-          <AiOutlineShoppingCart
-            size={25}
-            className="cursor-pointer absolute right-2 top-24"
-            onClick={() => addToCartHandler(data._id)}
-            color="#444"
-            title="Add to cart"
-          />
-          {open ? <ProductDetailsCard setOpen={setOpen} data={data} /> : null}
+          {/*<AiOutlineEye*/}
+          {/*  size={22}*/}
+          {/*  className="cursor-pointer absolute right-2 top-14"*/}
+          {/*  onClick={() => setOpen(!open)}*/}
+          {/*  color="#333"*/}
+          {/*  title="Quick view"*/}
+          {/*/>*/}
+          {/*<AiOutlineShoppingCart*/}
+          {/*  size={25}*/}
+          {/*  className="cursor-pointer absolute right-2 top-24"*/}
+          {/*  onClick={() => addToCartHandler(data._id)}*/}
+          {/*  color="#444"*/}
+          {/*  title="Add to cart"*/}
+          {/*/>*/}
+          {/*{open ? <ProductDetailsCard setOpen={setOpen} data={data} /> : null}*/}
         </div>
       </div>
     </>
