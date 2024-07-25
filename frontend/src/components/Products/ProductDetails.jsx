@@ -8,6 +8,8 @@ import {addToWishlist, removeFromWishlist,} from "../../redux/actions/wishlist";
 import {addTocart} from "../../redux/actions/cart";
 import {toast} from "react-toastify";
 import axios from "axios";
+import {FaFacebook, FaFilePdf, FaGlobe, FaInstagram, FaTwitter} from 'react-icons/fa';
+
 
 const ProductDetails = ({data}) => {
     const {wishlist} = useSelector((state) => state.wishlist);
@@ -148,6 +150,16 @@ const ProductDetails = ({data}) => {
                                     {/*  {data.originalPrice ? data.originalPrice + "$" : null}*/}
                                     {/*</h3>*/}
                                 </div>
+                                <div className="flex pt-3">
+                                    <h4 className={`${styles.productDiscountPrice}`}>
+                                        {data['Location'].join(', ')}
+                                    </h4>
+                                </div>
+                                {/*<div className="flex pt-3">*/}
+                                {/*    <h4 className={`${styles.productDiscountPrice}`}>*/}
+                                {/*        {data['Event Caption'] ? data['Event Caption'] : null}*/}
+                                {/*    </h4>*/}
+                                {/*</div>*/}
 
                                 <div className="flex items-center mt-12 justify-between pr-3">
                                     {/*<div>*/}
@@ -253,7 +265,7 @@ const ProductDetailsInfo = ({
                 <div className="relative">
                     <h5
                         className={
-                            "text-[#000] text-[18px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
+                            "text-[#000] text-[18px] px-0.5 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
                         }
                         onClick={() => setActive(1)}
                     >
@@ -266,26 +278,13 @@ const ProductDetailsInfo = ({
                 <div className="relative">
                     <h5
                         className={
-                            "text-[#000] text-[18px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
+                            "text-[#000] text-[18px] px-0.5 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
                         }
                         onClick={() => setActive(2)}
                     >
-                        Sponsorship Details
+                        Event Links and Details
                     </h5>
                     {active === 2 ? (
-                        <div className={`${styles.active_indicator}`}/>
-                    ) : null}
-                </div>
-                <div className="relative">
-                    <h5
-                        className={
-                            "text-[#000] text-[18px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
-                        }
-                        onClick={() => setActive(3)}
-                    >
-                        Sponsorship Package Details
-                    </h5>
-                    {active === 3 ? (
                         <div className={`${styles.active_indicator}`}/>
                     ) : null}
                 </div>
@@ -300,49 +299,51 @@ const ProductDetailsInfo = ({
 
             {active === 2 ? (
                 <div className="w-full min-h-[40vh] flex flex-col items-center py-3 overflow-y-scroll">
-                    {/*{data &&*/}
-                    {/*  data.reviews.map((item, index) => (*/}
-                    {/*    <div className="w-full flex my-2">*/}
-                    {/*      <img*/}
-                    {/*        src={`${item.user.avatar?.url}`}*/}
-                    {/*        alt=""*/}
-                    {/*        className="w-[50px] h-[50px] rounded-full"*/}
-                    {/*      />*/}
-                    {/*      <div className="pl-2 ">*/}
-                    {/*        <div className="w-full flex items-center">*/}
-                    {/*          <h1 className="font-[500] mr-3">{item.user.name}</h1>*/}
-                    {/*          <Ratings rating={data?.ratings} />*/}
-                    {/*        </div>*/}
-                    {/*        <p>{item.comment}</p>*/}
-                    {/*      </div>*/}
-                    {/*    </div>*/}
-                    {/*  ))}*/}
-
-                    {/*<div className="w-full flex justify-center">*/}
-                    {/*  {data && data.reviews.length === 0 && (*/}
-                    {/*    <h5>No Reviews have for this product!</h5>*/}
-                    {/*  )}*/}
+                    <div className="w-full min-h-[40vh] flex flex-col items-center py-3 overflow-y-scroll">
+                        <a href={data['Website_Link']} target="_blank" rel="noopener noreferrer">
+                            <FaGlobe size={30}
+                                     className={`cursor-pointer ${!data['Website_Link'] ? 'text-gray-500' : 'text-green-500'}`}/>
+                        </a>
+                        <br></br>
+                        <br></br>
+                        <a href={data['Brochure_Link']} target="_blank" rel="noopener noreferrer">
+                            <FaFilePdf size={30}
+                                       className={`cursor-pointer ${!data['Brochure_Link'] ? 'text-gray-500' : 'text-red-500'}`}/>
+                        </a>
+                        <br></br>
+                        <br></br>
+                        <a href={data['Facebook_Link']} target="_blank" rel="noopener noreferrer">
+                            <FaFacebook size={30}
+                                        className={`cursor-pointer ${!data['Facebook_Link'] ? 'text-gray-500' : 'text-blue-500'}`}/>
+                        </a>
+                        <br></br>
+                        <br></br>
+                        <a href={data['Instagram_Link']} target="_blank" rel="noopener noreferrer">
+                            <FaInstagram size={30}
+                                         className={`cursor-pointer ${!data['Instagram_Link'] ? 'text-gray-500' : 'text-red-500'}`}/>
+                        </a>
+                        <br></br>
+                        <br></br>
+                        <a href={data['Twitter_Link']} target="_blank" rel="noopener noreferrer">
+                            <FaTwitter size={30}
+                                       className={`cursor-pointer ${!data['Twitter_Link'] ? 'text-gray-500' : 'text-blue-500'}`}/>
+                        </a>
+                        <div className="py-2 text-[18px] leading-8 pb-10 whitespace-pre-line">
+                            {data && data['Related Links:'].map((department, index) => (
+                                <div key={index}
+                                     className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                                    {department.replace('/explore/category/', ' ')}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    {/*<div className="relative">*/}
+                    {/*    <h5 className={"text-[#000] text-[18px] px-0.5 leading-5 font-[600] cursor-pointer 800px:text-[20px]"}>*/}
+                    {/*        {data && (*/}
+                    {/*            <p>{data.Departments.join(', ')}</p>*/}
+                    {/*        )}*/}
+                    {/*    </h5>*/}
                     {/*</div>*/}
-                    "Website Link"
-                    <p className="py-2 text-[18px] leading-8 pb-10 whitespace-pre-line">
-                        {data['Website_Link']}
-                    </p>
-                    "Brochure Link"
-                    <p className="py-2 text-[18px] leading-8 pb-10 whitespace-pre-line">
-                        {data['Brochure_Link']}
-                    </p>
-                    "Facebook Link"
-                    <p className="py-2 text-[18px] leading-8 pb-10 whitespace-pre-line">
-                        {data['Facebook_Link']}
-                    </p>
-                    "Instagram Link"
-                    <p className="py-2 text-[18px] leading-8 pb-10 whitespace-pre-line">
-                        {data['Instagram_Link']}
-                    </p>
-                    "Twitter Link"
-                    <p className="py-2 text-[18px] leading-8 pb-10 whitespace-pre-line">
-                        {data['Twitter_Link']}
-                    </p>
 
                 </div>
             ) : null}
