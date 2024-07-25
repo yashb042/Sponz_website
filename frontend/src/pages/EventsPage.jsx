@@ -19,7 +19,7 @@ const EventsPage = () => {
       setData(d);
     } else {
       const d =
-      allProducts && allProducts.filter((i) => i.Category[0] === categoryData);
+      allProducts && allProducts.filter((i) => i['Related Links:'].some((cat) => cat.includes(categoryData)));
       setData(d);
     }
     //    window.scrollTo(0,0);
