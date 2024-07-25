@@ -4,22 +4,22 @@ export const navItems = [
         title: "Home",
         url: "/",
     },
-    // {
-    //   title: "Best Selling",
-    //   url: "/best-selling",
-    // },
     {
         title: "Events",
         url: "/events",
     },
     // {
+    //   title: "Best Selling",
+    //   url: "/best-selling",
+    // },
+    // {
     //   title: "Events",
     //   url: "/events",
     // },
-    {
-        title: "FAQ",
-        url: "/faq",
-    },
+    // {
+    //     title: "FAQ",
+    //     url: "/faq",
+    // },
 ];
 
 // branding data

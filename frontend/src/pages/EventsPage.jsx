@@ -32,7 +32,7 @@ const EventsPage = () => {
       <Loader />
     ) : (
       <div>
-      <Header activeHeading={3} />
+      <Header activeHeading={2} />
       <br />
       <br />
       <div className={`${styles.section}`}>
@@ -45,7 +45,7 @@ const EventsPage = () => {
           </h1>
         ) : null}
       </div>
-      <Footer />
+      {/*<Footer />*/}
     </div>
     )
   }

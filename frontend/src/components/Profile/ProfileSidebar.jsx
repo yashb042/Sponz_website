@@ -55,22 +55,22 @@ const ProfileSidebar = ({ setActive, active }) => {
             active === 2 ? "text-[red]" : ""
           } 800px:block hidden`}
         >
-          Orders
+          Past Sponsorships
         </span>
       </div>
-      <div
-        className="flex items-center cursor-pointer w-full mb-8"
-        onClick={() => setActive(3)}
-      >
-        <HiOutlineReceiptRefund size={20} color={active === 3 ? "red" : ""} />
-        <span
-          className={`pl-3 ${
-            active === 3 ? "text-[red]" : ""
-          } 800px:block hidden`}
-        >
-          Refunds
-        </span>
-      </div>
+      {/*<div*/}
+      {/*  className="flex items-center cursor-pointer w-full mb-8"*/}
+      {/*  onClick={() => setActive(3)}*/}
+      {/*>*/}
+      {/*  <HiOutlineReceiptRefund size={20} color={active === 3 ? "red" : ""} />*/}
+      {/*  <span*/}
+      {/*    className={`pl-3 ${*/}
+      {/*      active === 3 ? "text-[red]" : ""*/}
+      {/*    } 800px:block hidden`}*/}
+      {/*  >*/}
+      {/*    Refunds*/}
+      {/*  </span>*/}
+      {/*</div>*/}
 
       <div
         className="flex items-center cursor-pointer w-full mb-8"
@@ -86,19 +86,19 @@ const ProfileSidebar = ({ setActive, active }) => {
         </span>
       </div>
 
-      <div
-        className="flex items-center cursor-pointer w-full mb-8"
-        onClick={() => setActive(5)}
-      >
-        <MdOutlineTrackChanges size={20} color={active === 5 ? "red" : ""} />
-        <span
-          className={`pl-3 ${
-            active === 5 ? "text-[red]" : ""
-          } 800px:block hidden`}
-        >
-          Track Order
-        </span>
-      </div>
+      {/*<div*/}
+      {/*  className="flex items-center cursor-pointer w-full mb-8"*/}
+      {/*  onClick={() => setActive(5)}*/}
+      {/*>*/}
+      {/*  <MdOutlineTrackChanges size={20} color={active === 5 ? "red" : ""} />*/}
+      {/*  <span*/}
+      {/*    className={`pl-3 ${*/}
+      {/*      active === 5 ? "text-[red]" : ""*/}
+      {/*    } 800px:block hidden`}*/}
+      {/*  >*/}
+      {/*    Track Order*/}
+      {/*  </span>*/}
+      {/*</div>*/}
 
       <div
         className="flex items-center cursor-pointer w-full mb-8"
@@ -114,19 +114,19 @@ const ProfileSidebar = ({ setActive, active }) => {
         </span>
       </div>
 
-      <div
-        className="flex items-center cursor-pointer w-full mb-8"
-        onClick={() => setActive(7)}
-      >
-        <TbAddressBook size={20} color={active === 7 ? "red" : ""} />
-        <span
-          className={`pl-3 ${
-            active === 7 ? "text-[red]" : ""
-          } 800px:block hidden`}
-        >
-          Address
-        </span>
-      </div>
+      {/*<div*/}
+      {/*  className="flex items-center cursor-pointer w-full mb-8"*/}
+      {/*  onClick={() => setActive(7)}*/}
+      {/*>*/}
+      {/*  <TbAddressBook size={20} color={active === 7 ? "red" : ""} />*/}
+      {/*  <span*/}
+      {/*    className={`pl-3 ${*/}
+      {/*      active === 7 ? "text-[red]" : ""*/}
+      {/*    } 800px:block hidden`}*/}
+      {/*  >*/}
+      {/*    Address*/}
+      {/*  </span>*/}
+      {/*</div>*/}
 
       {user && user?.role === "Admin" && (
         <Link to="/admin/dashboard">

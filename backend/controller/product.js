@@ -109,8 +109,25 @@ router.get(
     "/get-all-products",
     catchAsyncErrors(async (req, res, next) => {
         try {
-            const knowafestevents = await KnowAFest.find().sort({}).limit(100);
+            const knowafestevents = await KnowAFest.find({
+                "Related Links:": {
+                    $nin: [
+                        "/explore/category/Workshops",
+                        "/explore/category/Symposiums",
+                        "/explore/category/Seminars",
+                        "/explore/category/Conferences",
+                        "/explore/category/Management"
+                    ]
+                },
+                "Event_Image": {
+                    $regex: /uploads/i
+                },
+                "Organizer": {
+                    $nin : ["Top Engineers"]
+                }
+            }).sort({}).limit(400);
             appendLinks(knowafestevents)
+            changeDates(knowafestevents)
             res.status(201).json({
                 success: true,
                 knowafestevents,
@@ -120,6 +137,19 @@ router.get(
         }
     })
 );
+
+function changeDates(knowafestevents) {
+    const numberRegex = /(?<!\.)\d+$/;
+
+
+    knowafestevents.forEach((event) => {
+        event['Start Date'] = event['Start Date'].split(' ')[0] + ' ' + event['Start Date'].split(' ')[1] + ' 2024';
+        event['End Date'] = event['End Date'].split(' ')[0] + ' ' + event['End Date'].split(' ')[1] + ' 2024';
+        event['Event_Name'] = event['Event_Name'].replace(numberRegex, "24");
+    });
+    return knowafestevents;
+
+}
 
 function appendLinks(knowafestevents) {
     knowafestevents.forEach((event) => {
