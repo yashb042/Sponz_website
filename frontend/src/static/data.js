@@ -22,6 +22,38 @@ export const navItems = [
     // },
 ];
 
+
+export const projectsData = [
+    {
+        title: "Social Media Deal",
+        description: "1 post & 1 story with the event promoting your product.",
+        price: "Rs 10,000 onwards",
+        buttonLabel: "Contact Event",
+        buttonStyle: {backgroundColor: '#4caf50', color: '#fff'},
+    },
+    {
+        title: "Jersey Deal",
+        description: "Have the event participants wear a jersey with your branding",
+        price: "Rs 5,000 onwards",
+        buttonLabel: "Contact Event",
+        buttonStyle: {backgroundColor: '#4caf50', color: '#fff'},
+    },
+    {
+        title: "Stall Deal",
+        description: "Have a stall at the event to showcase your products",
+        price: "Rs 15,000 onwards",
+        buttonLabel: "Contact Event",
+        buttonStyle: {backgroundColor: '#4caf50', color: '#fff'},
+    },
+    {
+        title: "Request Help",
+        description: "Need help on a custom package for this event?",
+        price: "",
+        buttonLabel: "REQUEST HELP",
+        buttonStyle: {backgroundColor: '#cfeecf', color: '#777'},
+    },
+];
+
 // branding data
 export const brandingData = [
     {
