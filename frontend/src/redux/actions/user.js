@@ -8,7 +8,6 @@ export const loadUser = () => async (dispatch) => {
             type: "LoadUserRequest",
         });
         const {data} = await axios.get(`${server}/user/getuser`, {
-            withCredentials: true,
             headers: {
                 "ngrok-skip-browser-warning": true,
             },
@@ -32,7 +31,6 @@ export const loadSeller = () => async (dispatch) => {
             type: "LoadSellerRequest",
         });
         const {data} = await axios.get(`${server}/shop/getSeller`, {
-            withCredentials: true,
             headers: {
                 "ngrok-skip-browser-warning": true,
             },
@@ -66,7 +64,6 @@ export const updateUserInformation =
                     name,
                 },
                 {
-                    withCredentials: true,
                     headers: {
                         "ngrok-skip-browser-warning": true,
                         "Access-Control-Allow-Credentials": true,
@@ -138,7 +135,6 @@ export const deleteUserAddress = (id) => async (dispatch) => {
         const {data} = await axios.delete(
             `${server}/user/delete-user-address/${id}`,
             {
-                withCredentials: true,
                 headers: {
                     "ngrok-skip-browser-warning": true,
                 },
