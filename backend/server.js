@@ -25,6 +25,10 @@ cloudinary.config({
 })
 
 
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 // create server
 const server = app.listen(process.env.PORT, () => {
   console.log(
