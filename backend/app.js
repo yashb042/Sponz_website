@@ -6,11 +6,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 app.use(cors({
-    origin: ['*'],
-    methods: ['GET', 'PUT', 'POST', 'HEAD', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['*'],
-    credentials: true
+    origin: '*', // Allow all origins
+    methods: '*', // Allow all HTTP methods
+    allowedHeaders: '*', // Allow all headers
+    credentials: false // Disable credentials
 }));
+
 
 app.use(express.json());
 app.use(cookieParser());
