@@ -125,7 +125,7 @@ router.get(
                 "Organizer": {
                     $nin : ["Top Engineers"]
                 }
-            }).sort({}).limit(400);
+            }).sort({}).limit(40);
             appendLinks(knowafestevents)
             changeDates(knowafestevents)
             res.status(201).json({
