@@ -1,5 +1,4 @@
 const express = require("express");
-const path = require("path");
 const ErrorHandler = require("./middleware/error");
 const app = express();
 const cookieParser = require("cookie-parser");
@@ -15,7 +14,6 @@ app.use(cors({
 
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'build')));
 app.use(cookieParser());
 app.use("/test", (req, res) => {
     res.send("Hello world!");
