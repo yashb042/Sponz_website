@@ -49,6 +49,8 @@ router.post("/create-user", async (req, res, next) => {
                 avatar,
                 password,
             });
+            console.log(userObj);
+            console.log('Here')
 
             sendToken(userObj, 201, res);
             res.status(201).json({

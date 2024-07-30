@@ -76,7 +76,9 @@ userSchema.pre("save", async function (next) {
 
 // jwt token
 userSchema.methods.getJwtToken = function () {
-    return jwt.sign({id: this._id}, {secret: "2FxXT1NTf2K1Mo4i6AOvtdI"});
+    return jwt.sign({id: this._id}, "" + "2FxXT1NTf2K1Mo4i6AOvtdI", {
+        expiresIn: "365d",
+    });
 };
 
 // compare password
