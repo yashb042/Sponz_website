@@ -8,6 +8,7 @@ export const loadUser = () => async (dispatch) => {
             type: "LoadUserRequest",
         });
         const {data} = await axios.get(`${server}/user/getuser`, {
+            withCredentials: true,
             headers: {
                 "ngrok-skip-browser-warning": true,
             },
