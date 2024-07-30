@@ -52,10 +52,9 @@ router.post("/create-user", async (req, res, next) => {
             console.log(userObj);
             console.log('Here')
 
-            sendToken(userObj, 201, res);
+            // sendToken(userObj, 201, res);
             res.status(201).json({
                 success: true,
-                message: `please check your email:- ${user.email} to activate your account!`,
             });
         } catch (error) {
             return next(new ErrorHandler(error.message, 500));
@@ -133,7 +132,7 @@ router.post(
                 );
             }
 
-            sendToken(user, 201, res);
+            sendToken(user, 200, res);
         } catch (error) {
             return next(new ErrorHandler(error.message, 500));
         }
