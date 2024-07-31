@@ -6,9 +6,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 app.use(cors({
-    origin: ['http://localhost:3006/'],// Allow all origins
+    origin: ['http://localhost:3006', 'https://yashb042.github.io/', 'https://yashb042.github.io'],// Allow all origins
     credentials: true,
-    exposedHeaders: ["set-cookie"],
 }));
 
 app.use(express.json());

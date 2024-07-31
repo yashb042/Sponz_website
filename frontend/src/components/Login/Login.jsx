@@ -22,6 +22,9 @@ const Login = () => {
                     email,
                     password,
                 },
+                {
+                    withCredentials: true,
+                }
             )
             .then((res) => {
                 toast.success("Login Success!");

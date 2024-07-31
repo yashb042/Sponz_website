@@ -16,9 +16,7 @@ const ProfileSidebar = ({setActive, active}) => {
     const logoutHandler = () => {
         axios
             .get(`${server}/user/logout`, {
-                headers: {
-                    "ngrok-skip-browser-warning": true,
-                },
+                withCredentials: true,
             })
             .then((res) => {
                 toast.success(res.data.message);
