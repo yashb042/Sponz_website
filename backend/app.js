@@ -6,10 +6,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 app.use(cors({
-  origin: ['http://localhost:',],
-  credentials: true
+    origin: '*', // Allow all origins
+    methods: '*', // Allow all HTTP methods
+    allowedHeaders: '*', // Allow all headers
+    credentials: true,
+    exposedHeaders: ["set-cookie"],
 }));
-
 
 app.use(express.json());
 app.use(cookieParser());

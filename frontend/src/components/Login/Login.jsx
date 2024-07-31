@@ -22,12 +22,14 @@ const Login = () => {
                     email,
                     password,
                 },
-                {withCredentials: true}
             )
             .then((res) => {
                 toast.success("Login Success!");
-                navigate("/");
-                window.location.reload(true);
+                res.headers.set("token", res.data.token);
+                setTimeout(function () {
+                    navigate("/");
+                    window.location.reload(true);
+                }, 2000);
             })
             .catch((err) => {
                 toast.error(err.response.data.message);
