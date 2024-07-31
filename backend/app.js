@@ -6,9 +6,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 app.use(cors({
-    origin: '*', // Allow all origins
-    methods: '*', // Allow all HTTP methods
-    allowedHeaders: '*', // Allow all headers
+    origin: ['http://localhost:3006/'],// Allow all origins
     credentials: true,
     exposedHeaders: ["set-cookie"],
 }));
