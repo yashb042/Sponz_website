@@ -132,7 +132,7 @@ router.post(
                 );
             }
 
-            sendToken(user, 200, res);
+            sendToken(user, 201, res);
         } catch (error) {
             return next(new ErrorHandler(error.message, 500));
         }
@@ -170,7 +170,7 @@ router.get(
                 expires: new Date(Date.now()),
                 httpOnly: true,
                 sameSite: "none",
-                // secure: true,
+                secure: true,
             });
             res.status(201).json({
                 success: true,

@@ -22,11 +22,7 @@ const Login = () => {
                     email,
                     password,
                 },
-                {
-                    headers: {
-                        "ngrok-skip-browser-warning": true,
-                    },
-                }
+                {withCredentials: true}
             )
             .then((res) => {
                 toast.success("Login Success!");
