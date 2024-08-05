@@ -62,7 +62,7 @@ const Header = ({ activeHeading }) => {
             <div>
               <Link to="/">
                 <img
-                    src="https://shopo.quomodothemes.website/assets/images/logo.svg"
+                    src="https://github.com/yashb042/Sponz_website/blob/master/frontend/public/logo.svg"
                     alt=""
                 />
               </Link>

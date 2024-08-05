@@ -104,6 +104,47 @@ router.delete(
     })
 );
 
+//products with filters
+router.get(
+    "/get-all-products-filters/:organizer",
+    catchAsyncErrors(async (req, res, next) => {
+        try {
+            const knowafestevents = await KnowAFest.find({
+                "Related Links:": {
+                    $nin: [
+                        "/explore/category/Workshops",
+                        "/explore/category/Symposiums",
+                        "/explore/category/Seminars",
+                        "/explore/category/Conferences",
+                        "/explore/category/Management"
+                    ]
+                },
+                "Related Links:": {
+                    $elemMatch: {
+                        $regex: `${req.params.organizer}`, $options: 'i'
+                    }
+
+                },
+                "Event_Image": {
+                    $regex: /uploads/i
+                },
+                "Organizer": {
+                    $nin: ["Top Engineers"]
+                },
+                ...(req.query.organizer && {"Organizer": req.query.organizer})
+            }).sort({}).limit(40);
+            appendLinks(knowafestevents)
+            changeDates(knowafestevents)
+            res.status(201).json({
+                success: true,
+                knowafestevents,
+            });
+        } catch (error) {
+            return next(new ErrorHandler(error, 400));
+        }
+    })
+);
+
 // get all products
 router.get(
     "/get-all-products",
@@ -123,7 +164,7 @@ router.get(
                     $regex: /uploads/i
                 },
                 "Organizer": {
-                    $nin : ["Top Engineers"]
+                    $nin: ["Top Engineers"]
                 }
             }).sort({}).limit(40);
             appendLinks(knowafestevents)
