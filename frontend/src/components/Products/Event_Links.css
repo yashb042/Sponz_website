@@ -1,0 +1,28 @@
+.event-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px 0;
+    gap: 50px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item i {
+    font-size: 200px;
+    color: gray;
+    margin-bottom: 40px;
+}
+
+.stat-value {
+    font-size: 40px;
+    color: #7bc143;
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 16px;
+    color: gray;
+}

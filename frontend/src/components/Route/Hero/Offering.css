@@ -1,0 +1,159 @@
+.campaign-cards-container {
+    text-align: center;
+    margin: 40px;
+}
+
+.campaign-cards-container h2 {
+    font-size: 24px;
+    color: #2a4759;
+}
+
+.campaign-cards-container h2 span {
+    font-weight: bold;
+    color: #1d3141;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    padding: 20px;
+    text-align: center;
+    /*    add gap*/
+    margin: 10px;
+}
+
+.card-image {
+    height: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 20px;
+}
+
+.find-athletes {
+    background-image: url('problem_athletes_image.webp');
+}
+
+.manage-campaigns {
+    background-image: url('problem_campaigns_image.webp');
+}
+
+.review-results {
+    background-image: url('problem_results_image.webp');
+}
+
+.ai-assisted-recommendation {
+    background-image: url('recommendation.jpeg');
+}
+
+.live-stream {
+    background-image: url('live-stream.jpg');
+}
+
+.click_report {
+    background-image: url('click_report.png');
+}
+
+.contract {
+    background-image: url('contract.webp');
+}
+
+.dispute-resolution {
+    background-image: url('dispute-resolution.jpg');
+}
+
+.project-deliverables {
+    background-image: url('project-deliverables.png');
+}
+
+.Sales-forecast {
+    background-image: url('Sales-forecast.png');
+}
+
+.service-bundle-big {
+    background-image: url('service-bundle-big.jpg');
+}
+
+.insights {
+    background-image: url('insights.jpg');
+}
+
+.content-creation {
+    background-image: url('content-creation.png');
+}
+
+.metrics {
+    background-image: url('metrics.png');
+}
+
+.card h3 {
+    color: #2a4759;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #627d98;
+    font-size: 14px;
+}
+
+.sprint-offerings-container {
+    text-align: center;
+    padding: 40px;
+    background-color: #f5f7fa;
+}
+
+h2 {
+    color: #2a4759;
+    margin-bottom: 20px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 30%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    color: #2a4759;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.card p {
+    color: #627d98;
+    font-size: 14px;
+    flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+}

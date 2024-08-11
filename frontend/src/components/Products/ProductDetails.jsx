@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {AiFillHeart, AiOutlineHeart, AiOutlineMessage,} from "react-icons/ai";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {server} from "../../server";
+import {faFemale, faMale, faUsers} from '@fortawesome/free-solid-svg-icons';
 import styles from "../../styles/styles";
 import {addToWishlist, removeFromWishlist,} from "../../redux/actions/wishlist";
 import {addTocart} from "../../redux/actions/cart";
@@ -10,6 +11,8 @@ import {toast} from "react-toastify";
 import axios from "axios";
 import {FaFacebook, FaFilePdf, FaGlobe, FaInstagram, FaTwitter} from 'react-icons/fa';
 import {projectsData} from "../../static/data";
+import "./Event_Links.css";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const ProductDetails = ({data}) => {
     const {wishlist} = useSelector((state) => state.wishlist);
@@ -21,6 +24,9 @@ const ProductDetails = ({data}) => {
     const [select, setSelect] = useState(0);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [randomNumberAttendees, setRandomNumberAttendees] = useState(0);
+    const [randomNumberMale, setRandomNumberMale] = useState(0);
+    const [randomNumberFemale, setRandomNumberFemale] = useState(0);
     // useEffect(() => {
     //   dispatch(getAllProductsShop(data && data?.shop._id));
     //   if (wishlist && wishlist.find((i) => i._id === data?._id)) {
@@ -29,6 +35,24 @@ const ProductDetails = ({data}) => {
     //     setClick(false);
     //   }
     // }, [data, wishlist]);
+
+    useEffect(() => {
+        const generateRandomNumberAttendees = () => {
+            let number = Math.floor(Math.random() * (5000 - 1000 + 1)) + 1000;
+            //round number to multiple of 500
+            let roundNumber = Math.round(number / 500) * 500;
+            //return   one normal, one +500, separated by -
+            return `${roundNumber - 500} - ${roundNumber}`;
+        };
+
+        const generateRandomNumber = () => {
+            return Math.floor(Math.random() * (100 - 50 + 1)) + 50;
+        };
+        setRandomNumberAttendees(generateRandomNumberAttendees());
+        let generateRandomNumber1 = generateRandomNumber();
+        setRandomNumberMale(generateRandomNumber1);
+        setRandomNumberFemale(100 - generateRandomNumber1);
+    }, []);
 
     const incrementCount = () => {
         setCount(count + 1);
@@ -242,6 +266,9 @@ const ProductDetails = ({data}) => {
                         products={products}
                         totalReviewsLength={0}
                         averageRating={0}
+                        randomNumberAttendees={randomNumberAttendees}
+                        randomNumberMale={randomNumberMale}
+                        randomNumberFemale={randomNumberFemale}
                     />
                     <br/>
                     <br/>
@@ -256,6 +283,9 @@ const ProductDetailsInfo = ({
                                 products,
                                 totalReviewsLength,
                                 averageRating,
+                                randomNumberAttendees,
+                                randomNumberMale,
+                                randomNumberFemale,
                             }) => {
     const [active, setActive] = useState(1);
 
@@ -328,6 +358,23 @@ const ProductDetailsInfo = ({
             {active === 2 ? (
                 <div className="w-full min-h-[40vh] flex flex-col items-center py-3 overflow-y-scroll">
                     <div className="w-full min-h-[40vh] flex flex-col items-center py-3 overflow-y-scroll">
+                        <div className="event-stats">
+                            <div className="stat-item">
+                                <FontAwesomeIcon icon={faUsers} size="5x" color="gray"/>
+                                <p className="stat-value">{randomNumberAttendees}</p>
+                                <p className="stat-label">attendees expected</p>
+                            </div>
+                            <div className="stat-item">
+                                <FontAwesomeIcon icon={faMale} size="5x" color="#ADD8E6"/>
+                                <p className="stat-value">{randomNumberMale} Male%</p>
+                                <p className="stat-label">Attendees</p>
+                            </div>
+                            <div className="stat-item">
+                                <FontAwesomeIcon icon={faFemale} size="5x" color="pink"/>
+                                <p className="stat-value">{randomNumberFemale} Female%</p>
+                                <p className="stat-label">Attendees</p>
+                            </div>
+                        </div>
                         <a href={data['Website_Link']} target="_blank" rel="noopener noreferrer">
                             <FaGlobe size={30}
                                      className={`cursor-pointer ${!data['Website_Link'] ? 'text-gray-500' : 'text-green-500'}`}/>
@@ -381,7 +428,7 @@ const ProductDetailsInfo = ({
                     <div className="w-full 800px:w">
                         <div className="background-color: white border-radius: 8px overflow">
                             <div className="p-5">
-                                <ProfileCard profile={data.profile}/>
+                                <ProfileCard data={data}/>
                                 <div className="stats-grid grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <StatCard label="Reach" value='1000' description="Latest Followers"/>
                                     <StatCard label="Activity" value='200' description="Avg feed post a month"/>
@@ -405,7 +452,7 @@ const ProductDetailsInfo = ({
     );
 };
 
-const ProfileCard = ({profile}) => {
+const ProfileCard = ({data}) => {
     return (
         <div style={{
             display: 'flex',
@@ -420,9 +467,9 @@ const ProfileCard = ({profile}) => {
                 <FaInstagram size={40}/>
             </div>
             <div>
-                <h2 style={{margin: '0', fontSize: '1.5rem'}}>Temp Name</h2>
-                <p style={{margin: '0', fontSize: '1rem', fontWeight: '300'}}>Temp Bio</p>
-                <p style={{fontSize: '0.8rem', color: '#ddd'}}>Last updated 2 days ago</p>
+                <h2 style={{margin: '0', fontSize: '1.5rem'}}>{data.Event_Name}</h2>
+                <p style={{margin: '0', fontSize: '1rem', fontWeight: '300'}}>{data['Event Caption']}</p>
+                <p style={{fontSize: '0.8rem', color: '#ddd'}}>Last updated 1 day ago</p>
             </div>
         </div>
     );
@@ -459,7 +506,7 @@ const ProjectCard = ({title, description, price, buttonLabel, buttonStyle}) => {
                 {price}
             </p>
             <span className="price-label">Estimated Price</span>
-            <button className="project-button" style={{ ...buttonStyle, marginLeft: '80px' }}>
+            <button className="project-button" style={{...buttonStyle, marginLeft: '80px'}}>
                 {buttonLabel}
             </button>
         </div>
