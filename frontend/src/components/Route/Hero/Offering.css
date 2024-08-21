@@ -82,6 +82,10 @@
     background-image: url('service-bundle-big.jpg');
 }
 
+.filtering {
+    background-image: url('filtering.png');
+}
+
 .insights {
     background-image: url('insights.jpg');
 }

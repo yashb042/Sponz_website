@@ -1,0 +1,40 @@
+.container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.selected-objective {
+    display: flex;
+    justify-content: center;
+}
+
+.map-container {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.selected-state, .duration-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.india-map {
+    width: 300px;
+    height: auto;
+    cursor: pointer;
+}
+
+.india-map path {
+    fill: #ccc;
+    stroke: #fff;
+    stroke-width: 1;
+}
+
+.india-map path:hover {
+    fill: #888;
+}
+
+.india-map path[aria-selected="true"] {
+    fill: #4a90e2;
+}

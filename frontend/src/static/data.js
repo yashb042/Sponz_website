@@ -8,6 +8,10 @@ export const navItems = [
         title: "Events",
         url: "/events",
     },
+    {
+        title: "BrandPortal",
+        url: "/brands",
+    },
     // {
     //   title: "Best Selling",
     //   url: "/best-selling",

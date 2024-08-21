@@ -67,7 +67,7 @@ const Hero = () => {
                         </p>
                     </div>
                     <div className="card">
-                        <div className="card-image ai-assisted-recommendation"></div>
+                        <div className="card-image filtering"></div>
                         <h3>Event Filtering</h3>
                         <p>
                             Filter tournaments and events based on city, sport, sponsorship amount, footfall,
