@@ -118,7 +118,7 @@ const BrandPortal = () => {
             }
         };
 
-        return (<div className="container">
+        return (<div className="container_brand">
             <h2>Your Brand Objective</h2>
             <Form>
                 <Dropdown>
