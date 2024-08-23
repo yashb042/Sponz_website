@@ -55,6 +55,7 @@ import {getAllProducts} from "./redux/actions/product";
 import axios from "axios";
 import {server} from "./server";
 import BrandPortal from "./components/Brands/BrandPortal";
+import BrandsPage from "./pages/BrandsPage";
 
 const App = () => {
     const [stripeApikey, setStripeApiKey] = useState("");
@@ -87,7 +88,7 @@ const App = () => {
                     element={<SellerActivationPage/>}
                 />
                 <Route path="/events" element={<EventsPage/>}/>
-                <Route path="/brands" element={<BrandPortal/>}/>
+                <Route path="/brands" element={<BrandsPage/>}/>
                 <Route path="/product/:id" element={<ProductDetailsPage/>}/>
                 <Route path="/best-selling" element={<BestSellingPage/>}/>
                 {/*<Route path="/events" element={<EventsPage />} />*/}

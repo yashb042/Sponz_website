@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
-import {Button, Dropdown, Form, Table} from 'react-bootstrap';
+import {Button, Dropdown, Form} from 'react-bootstrap';
 import India from "@react-map/india";
 
 
 import 'react-bootstrap/dist/react-bootstrap.min.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'react-svg-map/lib/index.css';
 import './brands.css';
 import Store from "../../redux/store";
 import {getCbcEvents} from "../../redux/actions/cbc_events";
@@ -86,18 +84,30 @@ const BrandPortal = () => {
 
         const MonthButtons = () => {
             return (
-                <div className="duration-buttons mt-2">
+                <>
                     {months.map((month, index) => (
-                        <Button
-                            key={index}
-                            variant={selectedMonthYear.includes(month) ? "secondary" : "outline-secondary"}
-                            onClick={() => handleMonthClick(month)}
-                        >
-                            {month}
-                        </Button>
-                    ))}
-                </div>
-            );
+                            <Button
+                                key={index}
+                                variant={selectedMonthYear.includes(month) ? "secondary" : "outline-secondary"}
+                                onClick={() => handleMonthClick(month)}
+                                style={{
+                                    display: 'inline-block',
+                                    margin: '5px',
+                                    padding: '10px 20px',
+                                    border: '2px solid #ffc107',
+                                    borderRadius: '20px',
+                                    backgroundColor: 'transparent',
+                                    color: '#ffc107',
+                                    cursor: 'pointer',
+                                    fontFamily: 'Arial, sans-serif',
+                                }}>
+                                {month}
+                            </Button>
+                        )
+                    )}
+                </>
+            )
+                ;
         };
 
         const handleMonthClick = (month) => {
@@ -118,6 +128,15 @@ const BrandPortal = () => {
             }
         };
 
+        const handleObjectiveClick = (objective) => {
+            if (!selectedObjective.includes(objective)) {
+                setSelectedObjective([...selectedObjective, objective]);
+            } else {
+                setSelectedObjective(selectedObjective.filter((item) => item !== objective));
+            }
+        };
+
+
         return (<div className="container_brand">
             <h2>Your Brand Objective</h2>
             <Form>
@@ -126,17 +145,31 @@ const BrandPortal = () => {
                         Select Objective
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        {objectives.map((objective, index) => (<Dropdown.Item key={index}
-                                                                              onClick={() => setSelectedObjective([...selectedObjective, objective])}>
-                            {objective}
-                        </Dropdown.Item>))}
+                        {objectives.map((objective, index) => (
+                            <Dropdown.Item
+                                key={index}
+                                onClick={() => handleObjectiveClick(objective)}
+                            >
+                                {objective}
+                            </Dropdown.Item>
+                        ))}
                     </Dropdown.Menu>
                 </Dropdown>
                 <div className="selected-objective mt-2">
                     {selectedObjective.map((objective, index) => (<Button
                         key={index}
                         variant="outline-primary"
-                        className="me-2"
+                        style={{
+                            display: 'inline-block',
+                            margin: '5px',
+                            padding: '10px 20px',
+                            border: '2px solid #ffc107',
+                            borderRadius: '20px',
+                            backgroundColor: 'transparent',
+                            color: '#ffc107',
+                            cursor: 'pointer',
+                            fontFamily: 'Arial, sans-serif',
+                        }}
                         onClick={() => setSelectedObjective(selectedObjective.filter((item) => item !== objective))}
                     >
                         {objective} <span>&times;</span>
@@ -156,64 +189,101 @@ const BrandPortal = () => {
             {/*    />*/}
             {/*</div>*/}
 
-            <h4 className="mt-3">All Cities Present</h4>
-            <div className="selected-state mt-2">
-                {selectedState.map((state, index) => (<Button
-                    key={index}
-                    variant="outline-warning"
-                    className="me-2"
-                    // onClick={() => {
-                    //     setSelectedState(selectedState.filter((item) => item !== state));
-                    //     setSelectedCities([]);
-                    // }}
-                >
-                    {state} ({states[state].length} cities)
-                </Button>))}
+            <h4 style={{textAlign: 'center', margin: '20px 0', fontFamily: 'Arial, sans-serif'}}>All Cities Present</h4>
+
+            <div style={{textAlign: 'center', marginBottom: '15px'}}>
+                {selectedState.map((state, index) => (
+                    <button
+                        key={index}
+                        style={{
+                            display: 'inline-block',
+                            margin: '5px',
+                            padding: '10px 20px',
+                            border: '2px solid #ffc107',
+                            borderRadius: '20px',
+                            backgroundColor: 'transparent',
+                            color: '#ffc107',
+                            cursor: 'pointer',
+                            fontFamily: 'Arial, sans-serif',
+                        }}
+                    >
+                        {state} ({states[state].length} cities)
+                    </button>
+                ))}
             </div>
-            <br/>
-            <ul>
-                {selectedCities.map((city, index) => (<li key={index}>{city}</li>))}
+
+            <ul style={{
+                textAlign: 'center',
+                listStyleType: 'none',
+                padding: 0,
+                marginBottom: '30px',
+                lineHeight: '1.8',
+                fontFamily: 'Arial, sans-serif'
+            }}>
+                {selectedCities.map((city, index) => (
+                    <li key={index}>{city}</li>
+                ))}
             </ul>
 
-            <h4>Select your Activity Duration</h4>
-            <br/>
-            <MonthButtons/>
+            <h4 style={{textAlign: 'center', marginBottom: '20px', fontFamily: 'Arial, sans-serif'}}>Select your
+                Activity Duration</h4>
 
-            {/* Fetch button */}
-            <br/>
-            <Button onClick={fetchFestivalsData} disabled={loading || !selectedState}>
-                {loading ? 'Loading...' : `Fetch Festivals/Colleges`}
-            </Button>
+            <div style={{textAlign: 'center', marginBottom: '20px'}}>
+                <MonthButtons/>
+            </div>
 
-            <br/>
-            <br/>
-            {/* Display Table */}
-            <Table striped bordered hover className="mt-3">
+            <div style={{textAlign: 'center', marginBottom: '30px'}}>
+                <button
+                    onClick={fetchFestivalsData}
+                    disabled={loading || !selectedState}
+                    style={{
+                        backgroundColor: '#007bff',
+                        border: 'none',
+                        color: 'white',
+                        padding: '10px 20px',
+                        borderRadius: '5px',
+                        cursor: 'pointer',
+                        fontFamily: 'Arial, sans-serif',
+                    }}
+                >
+                    {loading ? 'Loading...' : 'Fetch Festivals/Colleges'}
+                </button>
+            </div>
+
+            <table style={{
+                width: '90%',
+                margin: 'auto',
+                borderCollapse: 'collapse',
+                textAlign: 'center',
+                fontFamily: 'Arial, sans-serif'
+            }}>
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>College Name</th>
-                    <th>Festival Name</th>
-                    <th>State</th>
-                    <th>City</th>
-                    <th>Month</th>
-                    <th>Footfall</th>
+                <tr style={{backgroundColor: '#f2f2f2', borderBottom: '2px solid #ddd'}}>
+                    <th style={{padding: '10px', border: '1px solid #ddd'}}>#</th>
+                    <th style={{padding: '10px', border: '1px solid #ddd'}}>College Name</th>
+                    <th style={{padding: '10px', border: '1px solid #ddd'}}>Festival Name</th>
+                    <th style={{padding: '10px', border: '1px solid #ddd'}}>State</th>
+                    <th style={{padding: '10px', border: '1px solid #ddd'}}>City</th>
+                    <th style={{padding: '10px', border: '1px solid #ddd'}}>Month</th>
+                    <th style={{padding: '10px', border: '1px solid #ddd'}}>Footfall</th>
                 </tr>
                 </thead>
                 <tbody>
                 {festivalsData.map((item, index) => (
-                    <tr key={item.id}>
-                        <td>{index + 1}</td>
-                        <td>{item.name}</td>
-                        <td>{item.festivals_name}</td>
-                        <td>{item.states}</td>
-                        <td>{item.city}</td>
-                        <td>{item.month}</td>
-                        <td>{item.footfall}</td>
+                    <tr key={item.id} style={{borderBottom: '1px solid #ddd'}}>
+                        <td style={{padding: '10px', border: '1px solid #ddd'}}>{index + 1}</td>
+                        <td style={{padding: '10px', border: '1px solid #ddd'}}>{item.name}</td>
+                        <td style={{padding: '10px', border: '1px solid #ddd'}}>{item.festivals_name}</td>
+                        <td style={{padding: '10px', border: '1px solid #ddd'}}>{item.states}</td>
+                        <td style={{padding: '10px', border: '1px solid #ddd'}}>{item.city}</td>
+                        <td style={{padding: '10px', border: '1px solid #ddd'}}>{item.month}</td>
+                        <td style={{padding: '10px', border: '1px solid #ddd'}}>{item.footfall}</td>
                     </tr>
                 ))}
                 </tbody>
-            </Table>
+            </table>
+
+
         </div>);
     }
 ;
